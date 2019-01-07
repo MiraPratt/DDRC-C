@@ -23,6 +23,11 @@ public class Unit{
 	
 	}
 	
+	Unit(int x, int y){
+		setX(x);
+		setY(y);
+	}
+	
 	Unit(int hp, int mp, int melee, int magic, int speed, int physdef, int magdef) {
 		setHp(hp);
 		setMp(mp);

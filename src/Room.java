@@ -8,6 +8,8 @@ public class Room extends JPanel{
 	
 	private Tile heroLocation;
 	
+	private Tile lastHeroLocation = null;
+	
 	
 	Room(int sqr){
 		
@@ -50,7 +52,8 @@ public class Room extends JPanel{
 	
 				getTiles()[i][j] = new Tile(i,j);
 				this.add(getTiles()[i][j]);
-				getTiles()[i][j].setText("e");
+				getTiles()[i][j].setIcon( new ImageIcon(Image.Cobble));
+
 				
 			}
 			
@@ -73,6 +76,7 @@ public class Room extends JPanel{
 	}
 
 	public void setHeroLocation(Tile heroLocation) {
+		this.lastHeroLocation = this.heroLocation;
 		this.heroLocation = heroLocation;
 	}
 	

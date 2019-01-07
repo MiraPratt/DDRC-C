@@ -1,6 +1,10 @@
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 
 // the window
 public class DDRCC extends JFrame implements KeyListener {
@@ -41,9 +45,18 @@ public class DDRCC extends JFrame implements KeyListener {
 		//make a playable character
 		int[] inven = {1, 0, 0, 0};
 		Hero = new Playable(inven, 5 ,5 ,5 ,5 ,5 ,5 ,5 );
+		
+		
 		//place the character on the game board
-		currentRoom.getTiles()[herox][heroy].setText("H");
+		
+		currentRoom.getTiles()[herox][heroy].setIcon( new ImageIcon( Image.Player ));
 		currentRoom.setHeroLocation(currentRoom.getTiles()[herox][heroy]);
+		currentRoom.getHeroLocation().setUnit(Hero);
+		
+		//place an enemy on the board
+		
+		currentRoom.getTiles()[5][5].setIcon( new ImageIcon( Image.Goblin ));
+		currentRoom.getTiles()[5][5].setUnit(new Unit(5 ,5 ));
 	}
 	
 	//this handles movement
@@ -51,47 +64,63 @@ public class DDRCC extends JFrame implements KeyListener {
 		char key = e.getKeyChar();
 		//down
 		if(key == 's') {
-			currentRoom.getHeroLocation().setText("e");
+			currentRoom.getHeroLocation().setIcon( new ImageIcon(Image.Cobble ));
+
 			
 			//stay in the room
-			if(currentRoom.getHeroLocation().get_X() + 1 < currentRoom.getTiles().length ) {
+			if(currentRoom.getHeroLocation().get_X() + 1 < currentRoom.getTiles().length && currentRoom.getTiles()[currentRoom.getHeroLocation().get_X() + 1][currentRoom.getHeroLocation().get_Y()].getUnit() == null ) {
+				currentRoom.getHeroLocation().setUnit(null);
 				currentRoom.setHeroLocation(currentRoom.getTiles()[currentRoom.getHeroLocation().get_X() + 1][currentRoom.getHeroLocation().get_Y()]);
+				currentRoom.getHeroLocation().setUnit(Hero);
 			}
 			
-			currentRoom.getHeroLocation().setText("H");
+			currentRoom.getHeroLocation().setIcon( new ImageIcon(Image.Player ));
+
 		}
 		//up
 		if(key == 'w') {
-			currentRoom.getHeroLocation().setText("e");
+			currentRoom.getHeroLocation().setIcon( new ImageIcon(Image.Cobble));
+
 			
 			//stay in the room
-			if(currentRoom.getHeroLocation().get_X() - 1 >= 0 ) {
+			if(currentRoom.getHeroLocation().get_X() - 1 >= 0 && currentRoom.getTiles()[currentRoom.getHeroLocation().get_X() - 1][currentRoom.getHeroLocation().get_Y()].getUnit() == null ) {
+				currentRoom.getHeroLocation().setUnit(null);
 				currentRoom.setHeroLocation(currentRoom.getTiles()[currentRoom.getHeroLocation().get_X() - 1][currentRoom.getHeroLocation().get_Y()]);
+				currentRoom.getHeroLocation().setUnit(Hero);
 			}
 			
-			currentRoom.getHeroLocation().setText("H");
+			currentRoom.getHeroLocation().setIcon( new ImageIcon(Image.Player ));
+
 		}
 		//left
 		if(key == 'a') {
-			currentRoom.getHeroLocation().setText("e");
+			currentRoom.getHeroLocation().setIcon( new ImageIcon(Image.Cobble ));
+
 			
 			//stay in the room
-			if(currentRoom.getHeroLocation().get_Y() - 1 >= 0) {
+			if(currentRoom.getHeroLocation().get_Y() - 1 >= 0 && currentRoom.getTiles()[currentRoom.getHeroLocation().get_X()][currentRoom.getHeroLocation().get_Y() - 1].getUnit() == null) {
+				currentRoom.getHeroLocation().setUnit(null);
 				currentRoom.setHeroLocation(currentRoom.getTiles()[currentRoom.getHeroLocation().get_X()][currentRoom.getHeroLocation().get_Y() - 1]);
+				currentRoom.getHeroLocation().setUnit(Hero);
 			}
 			
-			currentRoom.getHeroLocation().setText("H");
+			currentRoom.getHeroLocation().setIcon( new ImageIcon(Image.Player ));
+
 		}
 		//right
 		if(key == 'd') {
-			currentRoom.getHeroLocation().setText("e");
+			currentRoom.getHeroLocation().setIcon( new ImageIcon(Image.Cobble ));
+
 			
 			//stay in the room
-			if(currentRoom.getHeroLocation().get_Y() + 1 < currentRoom.getTiles()[0].length) {
+			if(currentRoom.getHeroLocation().get_Y() + 1 < currentRoom.getTiles()[0].length && currentRoom.getTiles()[currentRoom.getHeroLocation().get_X()][currentRoom.getHeroLocation().get_Y() + 1].getUnit() == null) {
+				currentRoom.getHeroLocation().setUnit(null);
 				currentRoom.setHeroLocation(currentRoom.getTiles()[currentRoom.getHeroLocation().get_X()][currentRoom.getHeroLocation().get_Y() + 1]);
+				currentRoom.getHeroLocation().setUnit(Hero);
 			}
 			
-			currentRoom.getHeroLocation().setText("H");
+			currentRoom.getHeroLocation().setIcon( new ImageIcon(Image.Player ));
+
 		}
 	}
 	
