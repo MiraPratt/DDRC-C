@@ -1,21 +1,41 @@
 
 public class Unit{
 		
-	int hp;
+	int hp = 5;
 	
-	int mp;
+	int mp = 5;
 	
-	int melee;
+	int melee = 5;
 	
-	int magic;
+	int magic = 5;
 	
-	int speed;
+	int speed = 5;
 	
-	int physdef;
+	int physdef = 5;
 	
-	int magdef;
+	int magdef = 5;
+	
+	private int x;
+	
+	private int y;
+	
+	Unit(){
+	
+	}
 	
 	Unit(int hp, int mp, int melee, int magic, int speed, int physdef, int magdef) {
+		setHp(hp);
+		setMp(mp);
+		setMelee(melee);
+		setMagic(magic);
+		setSpeed(speed);
+		setPhysdef(physdef);
+		setMagdef(magdef);
+	}
+	
+	Unit(int x, int y, int hp, int mp, int melee, int magic, int speed, int physdef, int magdef) {
+		setX(x);
+		setY(y);
 		setHp(hp);
 		setMp(mp);
 		setMelee(melee);
@@ -83,6 +103,25 @@ public class Unit{
 	
 	public void setMagdef(int magdef) {
 		this.magdef = magdef;
+	}
+	
+	
+	//location
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 }
 
