@@ -19,6 +19,8 @@ public class Unit{
 	
 	private int y;
 	
+	private boolean hasMoved = false;
+	
 	Unit(){
 	
 	}
@@ -127,6 +129,14 @@ public class Unit{
 
 	public void setY(int y) {
 		this.y = y;
+	}
+
+	public boolean isHasMoved() {
+		return hasMoved;
+	}
+
+	public void setHasMoved(boolean hasMoved) {
+		this.hasMoved = hasMoved;
 	}
 }
 

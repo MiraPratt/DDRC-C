@@ -6,6 +6,8 @@ public class Tile extends JLabel{
 	
 	private Item item;
 	
+	private boolean passable = true;
+	
 	private int x;
 	
 	private int y;
@@ -64,5 +66,13 @@ public class Tile extends JLabel{
 
 	public void set_Y(int y) {
 		this.y = y;
+	}
+
+	public boolean isPassable() {
+		return passable;
+	}
+
+	public void setPassable(boolean passable) {
+		this.passable = passable;
 	}
 }
