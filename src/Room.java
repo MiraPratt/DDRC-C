@@ -25,10 +25,8 @@ public class Room extends JPanel{
 			
 			for(int j = 0 ; j < sqr ; j++) {
 	
-				getTiles()[i][j] = new Tile(i,j);
-				this.add(getTiles()[j][i]);
-				getTiles()[i][j].setText("e");
-				
+				getTiles()[i][j] = new Tile(Image.Cobble, i,j, true);
+				this.add(getTiles()[i][j]);
 			}
 			
 		}
@@ -50,9 +48,8 @@ public class Room extends JPanel{
 			
 			for(int j = 0 ; j < height ; j++) {
 	
-				getTiles()[i][j] = new Tile(i,j);
+				getTiles()[i][j] = new Tile(Image.Cobble, i, j, true);
 				this.add(getTiles()[i][j]);
-				getTiles()[i][j].setIcon( new ImageIcon(Image.Cobble));
 
 				
 			}

@@ -8,4 +8,6 @@ public enum Image {;
 	public static String Wall = new String("/home/mira/eclipse-workspace/DDRC-C/src/icons/dc-dngn/wall/stone_dark0.png");
 
 	public static String Goblin = new String("/home/mira/eclipse-workspace/DDRC-C/src/icons/dc-mon/hobgoblin.png");
+	
+	public static String SmallHealth = new String("/home/mira/eclipse-workspace/DDRC-C/src/icons/item/potion/i-blood.png");
 }

@@ -4,8 +4,8 @@ public class Playable extends Unit{
 
 	private int[] inven;
 	
-	Playable(int[] inven, int hp, int mp, int melee, int magic, int speed, int physdef, int magdef){
-		super( hp, mp, melee, magic, speed, physdef, magdef);
+	Playable(String art, int x, int y, int[] inven, int hp, int mp, int melee, int magic, int speed, int physdef, int magdef){
+		super(art, x, y, hp, mp, melee, magic, speed, physdef, magdef);
 		this.inven = inven;
 	}
 

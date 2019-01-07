@@ -21,26 +21,16 @@ public class Unit{
 	
 	private boolean hasMoved = false;
 	
-	Unit(){
+	private String art;
 	
-	}
-	
-	Unit(int x, int y){
+	Unit(String art, int x, int y){
+		setArt(art);
 		setX(x);
 		setY(y);
 	}
 	
-	Unit(int hp, int mp, int melee, int magic, int speed, int physdef, int magdef) {
-		setHp(hp);
-		setMp(mp);
-		setMelee(melee);
-		setMagic(magic);
-		setSpeed(speed);
-		setPhysdef(physdef);
-		setMagdef(magdef);
-	}
-	
-	Unit(int x, int y, int hp, int mp, int melee, int magic, int speed, int physdef, int magdef) {
+	Unit(String art, int x, int y, int hp, int mp, int melee, int magic, int speed, int physdef, int magdef) {
+		setArt(art);
 		setX(x);
 		setY(y);
 		setHp(hp);
@@ -114,6 +104,14 @@ public class Unit{
 	
 	
 	//location
+
+	public String getArt() {
+		return art;
+	}
+
+	public void setArt(String art) {
+		this.art = art;
+	}
 
 	public int getX() {
 		return x;

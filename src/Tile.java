@@ -1,3 +1,4 @@
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class Tile extends JLabel{
@@ -8,40 +9,66 @@ public class Tile extends JLabel{
 	
 	private boolean passable = true;
 	
+	private String art;
+	
 	private int x;
 	
 	private int y;
 	
-	Tile(int x, int y){
+	Tile(String art, int x, int y, boolean passable){
+		setArt(art);
 		set_X(x);
 		set_Y(y);
+		setPassable(passable);
+		updateGraphic();
 	}
 	
-	Tile(int x, int y, Unit unit){
+	Tile(String art, int x, int y, Unit unit, boolean passable){
+		setArt(art);
 		set_X(x);
 		set_Y(y);
-		this.unit = unit;
+		setUnit(unit);
+		setPassable(passable);
+		updateGraphic();
 	}
 	
-	Tile(int x, int y, Item item){
+	Tile(String art, int x, int y, Item item, boolean passable){
+		setArt(art);
 		set_X(x);
 		set_Y(y);
-		this.item = item;
+		setItem(item);
+		setPassable(passable);
+		updateGraphic();
 	}
 	
-	Tile(int x, int y, Unit unit, Item item){
+	Tile(String art, int x, int y, Unit unit, Item item, boolean passable){
+		setArt(art);
 		set_X(x);
 		set_Y(y);
-		this.unit = unit;
-		this.item = item;
+		setUnit(unit);
+		setItem(item);
+		setPassable(passable);
+		updateGraphic();
 	}
-
+	
+	public void updateGraphic() {
+		this.setIcon(new ImageIcon(this.getArt()));
+		if(item != null) {
+			this.setIcon(new ImageIcon(item.getArt()));
+		}
+		if(unit != null) {
+			this.setIcon(new ImageIcon(unit.getArt()));
+		}
+		
+	}
+	
 	public Unit getUnit() {
 		return unit;
 	}
 
 	public void setUnit(Unit unit) {
 		this.unit = unit;
+		updateGraphic();
 	}
 
 	public Item getItem() {
@@ -50,6 +77,7 @@ public class Tile extends JLabel{
 
 	public void setItem(Item item) {
 		this.item = item;
+		updateGraphic();
 	}
 
 	public int get_X() {
@@ -74,5 +102,13 @@ public class Tile extends JLabel{
 
 	public void setPassable(boolean passable) {
 		this.passable = passable;
+	}
+
+	public String getArt() {
+		return art;
+	}
+
+	public void setArt(String art) {
+		this.art = art;
 	}
 }

@@ -3,24 +3,20 @@ public class Item {
 
 	private int plusHp = 1;
 	
+	private String art;
+	
 	private int x;
 	
 	private int y;
 	
-	Item(){
-		
-	}
-	
-	Item(int plusHp){
-		setPlusHp(plusHp);
-	}
-	
-	Item(int x, int y){
+	Item(String art, int x, int y){
+		setArt(art);
 		setX(x);
 		setY(y);
 	}
 	
-	Item(int x, int y, int plusHp){
+	Item(String art, int x, int y, int plusHp){
+		setArt(art);
 		setX(x);
 		setY(y);
 		setPlusHp(plusHp);
@@ -49,6 +45,14 @@ public class Item {
 
 	public void setY(int y) {
 		this.y = y;
+	}
+
+	public String getArt() {
+		return art;
+	}
+
+	public void setArt(String art) {
+		this.art = art;
 	}
 
 	

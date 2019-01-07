@@ -13,13 +13,14 @@ public class DDRCC extends JFrame implements KeyListener {
 	
 	private Room currentRoom;
 	
+	//the player will go from room to room so a reference to their character is stored in the class of the window
 	private Playable Hero;
 	
 	DDRCC(int sqr) {
 		currentRoom = new Room(sqr);
 		addKeyListener(this);
 		this.setSize(600,600);
-		this.getContentPane().add(currentRoom);
+		this.getContentPane().add(currentRoom, (int)CENTER_ALIGNMENT);
 		this.setTitle("DDRC&C");
 		this.setVisible(true);
 		
@@ -29,7 +30,7 @@ public class DDRCC extends JFrame implements KeyListener {
 		currentRoom = new Room(width, height);
 		addKeyListener(this);
 		this.setSize(600,600);
-		this.getContentPane().add(currentRoom);
+		this.getContentPane().add(currentRoom, (int)CENTER_ALIGNMENT);
 		this.setTitle("DDRC&C");
 		this.setVisible(true);
 		
@@ -46,49 +47,23 @@ public class DDRCC extends JFrame implements KeyListener {
 	public void start(int herox, int heroy) {
 		//make a playable character
 		int[] inven = {1, 0, 0, 0};
-		Hero = new Playable(inven, 9 ,5 ,5 ,5 ,5 ,5 ,5 );
+		Hero = new Playable(Image.Player,herox, heroy, inven, 9 ,5 ,5 ,5 ,5 ,5 ,5 );
 		
 		
 		//place the character on the game board
 		
-		currentRoom.getTiles()[herox][heroy].setIcon( new ImageIcon( Image.Player ));
 		currentRoom.setHeroLocation(currentRoom.getTiles()[herox][heroy]);
 		currentRoom.getHeroLocation().setUnit(Hero);
 		
-		//place an enemy on the board
-		
-		currentRoom.getTiles()[5][5].setIcon( new ImageIcon( Image.Goblin ));
-		currentRoom.getTiles()[5][5].setUnit(new Unit(5 ,5 ));
-		
-		
-		//place an enemy on the board
-		
-		currentRoom.getTiles()[6][6].setIcon( new ImageIcon( Image.Goblin ));
-		currentRoom.getTiles()[6][6].setUnit(new Unit(5 ,5 ));
-		
-		//place an enemy on the board
-		
-		currentRoom.getTiles()[7][7].setIcon( new ImageIcon( Image.Goblin ));
-		currentRoom.getTiles()[7][7].setUnit(new Unit(5 ,5 ));
-		
-		//place an enemy on the board
-		
-		currentRoom.getTiles()[8][8].setIcon( new ImageIcon( Image.Goblin ));
-		currentRoom.getTiles()[8][8].setUnit(new Unit(5 ,5 ));
-		
-		//place another enemy on the board
-		
-		
-		currentRoom.getTiles()[15][15].setIcon( new ImageIcon( Image.Goblin ));
-		currentRoom.getTiles()[15][15].setUnit(new Unit(15 ,15 ));
-		
-		//place a wall
-		currentRoom.getTiles()[10][10].setIcon( new ImageIcon( Image.Wall ));
-		currentRoom.getTiles()[10][10].setPassable(false);
-		
+
 	}
 	
-	//handles movement
+	
+	
+	
+	
+	
+	//handles movement of player
 	public void keyPressed(KeyEvent e) {
 		char key = e.getKeyChar();
 		Tile stile = null;
@@ -257,6 +232,10 @@ public class DDRCC extends JFrame implements KeyListener {
 		}
 	}
 	
+	
+	
+	
+	
 	//enemies move
 	public void keyReleased(KeyEvent e) {
 		//find enemies and make them move
@@ -288,6 +267,12 @@ public class DDRCC extends JFrame implements KeyListener {
 			}
 		}
 	}
+	
+	
+	
+	
+	
+	
 	
 	public void keyTyped(KeyEvent e) {
 		
